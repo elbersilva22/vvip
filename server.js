@@ -5,24 +5,27 @@ const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'público')));
 
 const CI = process.env.CI;
 const CS = process.env.CS;
 
 app.post('/criar-pix', async (req, res) => {
+  const { amount } = req.body;
+  const valor = amount || 23.99;
   const transactionId = `vip-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+
   try {
     const fetch = (await import('node-fetch')).default;
     const response = await fetch('https://api.misticpay.com/api/transactions/create', {
       method: 'POST',
       headers: { 'ci': CI, 'cs': CS, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        amount: 23.99,
+        amount: valor,
         payerName: 'Cliente VIP',
         payerDocument: '00000000000',
         transactionId,
-        description: 'Acesso Grupo VIP'
+        description: valor === 15 ? 'Acesso Básico Grupo VIP' : 'Acesso Completo Grupo VIP'
       })
     });
     const data = await response.json();
