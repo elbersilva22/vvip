@@ -5,15 +5,13 @@ const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'público')));
 
 const CI = process.env.CI;
 const CS = process.env.CS;
 
-// Gerar PIX sem precisar de nome/CPF
 app.post('/criar-pix', async (req, res) => {
   const transactionId = `vip-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
-
   try {
     const fetch = (await import('node-fetch')).default;
     const response = await fetch('https://api.misticpay.com/api/transactions/create', {
@@ -27,10 +25,8 @@ app.post('/criar-pix', async (req, res) => {
         description: 'Acesso Grupo VIP'
       })
     });
-
     const data = await response.json();
     if (!response.ok) return res.status(400).json({ erro: data.message || 'Erro ao gerar PIX' });
-
     res.json({
       transactionId: data.data.transactionId,
       qrCodeBase64: data.data.qrCodeBase64,
@@ -42,7 +38,6 @@ app.post('/criar-pix', async (req, res) => {
   }
 });
 
-// Verificar pagamento
 app.post('/verificar-pix', async (req, res) => {
   const { transactionId } = req.body;
   try {
@@ -60,7 +55,7 @@ app.post('/verificar-pix', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'público', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
