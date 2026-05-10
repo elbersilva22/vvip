@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'público')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const CI = process.env.CI;
 const CS = process.env.CS;
@@ -25,7 +25,7 @@ app.post('/criar-pix', async (req, res) => {
         payerName: 'Cliente VIP',
         payerDocument: '00000000000',
         transactionId,
-        description: valor === 15 ? 'Acesso Básico Grupo VIP' : 'Acesso Completo Grupo VIP'
+        description: valor <= 15 ? 'Acesso Basico Grupo VIP' : 'Acesso Completo Grupo VIP'
       })
     });
     const data = await response.json();
@@ -58,7 +58,7 @@ app.post('/verificar-pix', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'público', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
