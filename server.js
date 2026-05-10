@@ -5,22 +5,13 @@ const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-// Serve arquivos estáticos da pasta public
 app.use(express.static(path.join(__dirname, 'public')));
 
 const CI = process.env.CI;
 const CS = process.env.CS;
 
-// Gerar PIX
+// Gerar PIX sem precisar de nome/CPF
 app.post('/criar-pix', async (req, res) => {
-  const { nome, cpf } = req.body;
-
-  if (!nome || !cpf) return res.status(400).json({ erro: 'Nome e CPF obrigatórios' });
-
-  const cpfLimpo = cpf.replace(/\D/g, '');
-  if (cpfLimpo.length !== 11) return res.status(400).json({ erro: 'CPF inválido' });
-
   const transactionId = `vip-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
 
   try {
@@ -30,8 +21,8 @@ app.post('/criar-pix', async (req, res) => {
       headers: { 'ci': CI, 'cs': CS, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         amount: 23.99,
-        payerName: nome,
-        payerDocument: cpfLimpo,
+        payerName: 'Cliente VIP',
+        payerDocument: '00000000000',
         transactionId,
         description: 'Acesso Grupo VIP'
       })
@@ -68,7 +59,6 @@ app.post('/verificar-pix', async (req, res) => {
   }
 });
 
-// Rota principal
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
