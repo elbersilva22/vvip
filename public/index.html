@@ -127,7 +127,7 @@ body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);ove
 /* SOCIAL STRIP */
 .strip{background:rgba(255,255,255,.03);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 0;overflow:hidden;}
 .strip-inner{display:flex;gap:48px;animation:marquee 22s linear infinite;white-space:nowrap;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-60%)}}
 .si{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(240,240,240,.4);}
 .si .y{color:var(--gold);}
 
@@ -318,7 +318,7 @@ footer a{color:var(--red);text-decoration:none;}
 <body>
 
 <!-- ANN BAR -->
-<div class="ann">🔥 OFERTA ESPECIAL — Acesso por apenas R$ 19,90 · Tempo limitado</div>
+<div class="ann">🔥 OFERTA RELÂMPAGO — Acesso por apenas R$ 7,90 · Últimas vagas!</div>
 
 <!-- HEADER -->
 <header class="hdr">
@@ -348,8 +348,8 @@ footer a{color:var(--red);text-decoration:none;}
       <div class="pill"><span class="g">✓</span> Funciona no celular</div>
     </div>
 
-    <a href="#" onclick="abrirModal();return false;" class="btn-cta">
-      🔓 QUERO ACESSO AGORA — R$ 19,90
+    <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta">
+      🔓 QUERO ACESSO AGORA — R$ 7,90
       <small>PIX · Sem cadastro · Acesso imediato</small>
     </a>
 
@@ -392,10 +392,10 @@ footer a{color:var(--red);text-decoration:none;}
 <section class="sec" style="background:var(--panel);border-bottom:1px solid var(--border);">
   <div class="sec-inner wide">
     <div class="stats">
-      <div class="stat fade"><div class="stat-n" id="c1">0</div><div class="stat-l">Membros ativos</div></div>
+      <div class="stat fade"><div class="stat-n">2.347</div><div class="stat-l">Membros ativos</div></div>
       <div class="stat fade"><div class="stat-n">400+</div><div class="stat-l">Fotos e vídeos</div></div>
       <div class="stat fade"><div class="stat-n">4.9★</div><div class="stat-l">Avaliação média</div></div>
-      <div class="stat fade"><div class="stat-n" id="c2">0</div><div class="stat-l">Online agora</div></div>
+      <div class="stat fade"><div class="stat-n">312</div><div class="stat-l">Online agora</div></div>
     </div>
   </div>
 </section>
@@ -408,11 +408,14 @@ footer a{color:var(--red);text-decoration:none;}
     <p class="sec-p">Sem enrolação. Veja e decida.</p>
     <div class="vid-wrap">
       <div class="vid-line"></div>
-      <iframe src="https://drive.google.com/file/d/1wQgCUeScuQDzZHfu7BxsrLWFIjlwHb60/preview" allowfullscreen allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1wQgCUeScuQDzZHfu7BxsrLWFIjlwHb60/preview" 
+        allowfullscreen allow="autoplay"
+        onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:#111;color:#666;flex-direction:column;gap:12px;\'><span style=\'font-size:40px;\'>▶️</span><p style=\'font-size:13px;\'>Clique para ver as prévias no Telegram</p><a href=\'https://t.me/enganadasburrinhas\' target=\'_blank\' style=\'padding:12px 24px;background:linear-gradient(135deg,#ff2d2d,#ff7426);border-radius:8px;color:#fff;font-weight:700;text-decoration:none;\'>VER PRÉVIAS GRÁTIS</a></div>'">
+    </iframe>
     </div>
     <div style="text-align:center;">
-      <a href="#" onclick="abrirModal();return false;" class="btn-cta" style="display:inline-block;max-width:400px;">
-        🔓 QUERO ACESSO — R$ 19,90
+      <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">
+        🔓 QUERO ACESSO — R$ 7,90
         <small>PIX · Sem cadastro · Acesso imediato</small>
       </a>
     </div>
@@ -468,11 +471,11 @@ footer a{color:var(--red);text-decoration:none;}
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">O pagamento aparece na fatura do banco?<span class="faq-icon">+</span></button><div class="faq-a">Não. O pagamento é via PIX — aparece só como transferência PIX, sem identificar o tipo de conteúdo. Totalmente discreto. Sua privacidade está protegida.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">Como recebo o acesso depois de pagar?<span class="faq-icon">+</span></button><div class="faq-a">Assim que o pagamento é confirmado — geralmente menos de 1 minuto — o link de acesso aparece na tela automaticamente. Clica, entra no grupo e já começa a ver o conteúdo.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">É conteúdo de verdade ou é golpe?<span class="faq-icon">+</span></button><div class="faq-a">Assista o vídeo nessa página — ela mesma explica o que tem dentro. O grupo de prévias gratuito também existe para você ver antes de pagar. Não pedimos confiança cega.</div></div>
-      <div class="faq"><button class="faq-q" onclick="tFaq(this)">Tem mensalidade ou é pagamento único?<span class="faq-icon">+</span></button><div class="faq-a">R$ 19,90 de pagamento único — sem mensalidade, sem renovação automática. Paga uma vez e acessa tudo, incluindo o conteúdo novo que é adicionado diariamente.</div></div>
+      <div class="faq"><button class="faq-q" onclick="tFaq(this)">Tem mensalidade ou é pagamento único?<span class="faq-icon">+</span></button><div class="faq-a">R$ 7,90 de pagamento único — sem mensalidade, sem renovação automática. Paga uma vez e acessa tudo, incluindo o conteúdo novo que é adicionado diariamente.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">Minha família vai saber?<span class="faq-icon">+</span></button><div class="faq-a">Não. O Telegram tem senha e função de arquivar conversas. O PIX não identifica o destino na fatura. Use o Telegram com senha habilitada para maior privacidade.</div></div>
     </div>
     <div style="text-align:center;margin-top:28px;">
-      <a href="#" onclick="abrirModal();return false;" class="btn-cta" style="display:inline-block;max-width:400px;">🔓 QUERO ENTRAR — R$ 19,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
+      <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">🔓 QUERO ENTRAR — R$ 7,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
     </div>
   </div>
 </section>
@@ -487,8 +490,8 @@ footer a{color:var(--red);text-decoration:none;}
     <div class="cd"><div class="cd-n" id="cdm">23</div><div class="cd-l">Min</div></div>
     <div class="cd"><div class="cd-n" id="cds">59</div><div class="cd-l">Seg</div></div>
   </div>
-  <div class="spots-b"><div class="live-dot"></div>⚡ Apenas <span id="spots" style="margin:0 4px;font-weight:900;">14</span> vagas agora</div>
-  <a href="#" onclick="abrirModal();return false;" class="btn-cta" style="display:inline-block;max-width:380px;">🔓 GARANTIR MINHA VAGA — R$ 19,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
+  <div class="spots-b"><div class="live-dot"></div>⚡ Apenas <span id="spots" style="margin:0 4px;font-weight:900;">23</span> vagas agora</div>
+  <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:380px;">🔓 GARANTIR MINHA VAGA — R$ 7,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
 </section>
 
 <!-- TRUST BAR -->
@@ -510,7 +513,7 @@ footer a{color:var(--red);text-decoration:none;}
     <h2 class="sec-h">Escolha como quer entrar</h2>
     <div class="tg-btns">
       <a href="#" onclick="abrirModal();return false;" class="tg-btn tg-btn-p">
-        <span class="tg-bi">🔥</span><div class="tg-bt"><div class="tg-bt-t">COMPRAR ACESSO VIP — R$ 19,90</div><div class="tg-bt-s">PIX · acesso imediato</div></div><span class="tg-arr">→</span>
+        <span class="tg-bi">🔥</span><div class="tg-bt"><div class="tg-bt-t">COMPRAR ACESSO VIP — R$ 7,90</div><div class="tg-bt-s">PIX · acesso imediato</div></div><span class="tg-arr">→</span>
       </a>
       <a href="https://t.me/enganadasburrinhas" target="_blank" class="tg-btn tg-btn-s">
         <span class="tg-bi">👁</span><div class="tg-bt"><div class="tg-bt-t">VER PRÉVIAS GRÁTIS</div><div class="tg-bt-s">Entrada livre · sem compromisso</div></div><span class="tg-arr">→</span>
@@ -529,8 +532,8 @@ footer a{color:var(--red);text-decoration:none;}
     <div class="sec-label"><span class="sl"></span>ÚLTIMA CHANCE<span class="sl"></span></div>
     <h2 class="sec-h" style="margin-bottom:10px;">Simples: ou você entra,<br/>ou fica de fora.</h2>
     <p style="font-size:13px;color:var(--muted);margin-bottom:28px;">Ela adiciona conteúdo novo todo dia. Cada dia que passa é conteúdo que você perdeu.</p>
-    <a href="#" onclick="abrirModal();return false;" class="btn-cta" style="display:inline-block;max-width:380px;">
-      🔓 ENTRAR AGORA — R$ 19,90
+    <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:380px;">
+      🔓 ENTRAR AGORA — R$ 7,90
       <small>PIX · Sem cadastro · Acesso em 1 minuto</small>
     </a>
   </div>
@@ -545,7 +548,7 @@ footer a{color:var(--red);text-decoration:none;}
 <!-- STICKY BAR -->
 <div class="sticky" id="sticky">
   <div class="sticky-left">
-    <div class="t">🔒 Clube Secreto — R$ 19,90</div>
+    <div class="t">🔒 Clube Secreto — R$ 7,90</div>
     <div class="s">PIX · Acesso imediato · 100% discreto</div>
   </div>
   <a href="#" onclick="abrirModal();return false;" class="sticky-btn">🔓 ENTRAR</a>
@@ -556,29 +559,50 @@ footer a{color:var(--red);text-decoration:none;}
 
 <!-- MODAL -->
 <div id="modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.93);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;">
-  <div class="mbox">
+  <div class="mbox" style="max-height:90vh;overflow-y:auto;">
     <button class="mclose" onclick="fecharModal()">✕</button>
 
+    <!-- STEP 1: OFERTA PRINCIPAL R$ 7,90 -->
     <div id="s1">
       <div class="mtop">
         <div class="mico">🔒</div>
         <div class="mtit">Clube Secreto — Acesso VIP</div>
-        <div class="mold">De R$ 39,90</div>
-        <div class="mprice"><span class="mpv">R$ 19,90</span><span class="mbadge">-50%</span></div>
+        <div class="mold">De R$ 19,90</div>
+        <div class="mprice"><span class="mpv">R$ 7,90</span><span class="mbadge">-60%</span></div>
         <div class="msub">Pagamento único · Sem mensalidade · Acesso imediato</div>
       </div>
-      <div class="mtimer"><div class="live-dot"></div>⚡ Desconto válido por <span id="ot" style="margin:0 4px;font-weight:900;">09:59</span></div>
-      <div class="minc">
-        <div class="minc-t">O que você recebe:</div>
-        <div class="minc-i">✅ Fotos e vídeos que não estão em nenhuma rede</div>
-        <div class="minc-i">✅ Conteúdo novo adicionado todo dia</div>
-        <div class="minc-i">✅ Atendimento direto com ela</div>
-        <div class="minc-i">🔒 Fatura discreta — não aparece o nome</div>
-        <div class="minc-i">📱 Funciona em qualquer celular</div>
+
+      <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:6px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:rgba(240,240,240,0.7);display:flex;align-items:flex-start;gap:6px;">
+        <span>ℹ️</span><span>O PIX aparece como <strong style="color:#22c55e;">MisticPay</strong> — plataforma de pagamento segura e verificada.</span>
       </div>
-      <button onclick="gerarPix(19.90)" id="btn1" class="mbtn">🔥 GERAR PIX — R$ 19,90</button>
-      <div class="mor"><span>OU COMECE COM MENOS</span></div>
-      <button onclick="gerarPix(12.00)" id="btn2" class="mbtn-basic">✨ ACESSO BÁSICO — R$ 12,00 · Só fotos</button>
+
+      <div class="mtimer"><div class="live-dot"></div>⚡ Oferta válida por <span id="ot" style="margin:0 4px;font-weight:900;">09:59</span></div>
+
+      <div class="minc">
+        <div class="minc-t">O que você recebe por R$ 7,90:</div>
+        <div class="minc-i">✅ Acesso ao grupo VIP no Telegram</div>
+        <div class="minc-i">✅ Fotos e vídeos exclusivos</div>
+        <div class="minc-i">✅ Conteúdo novo todo dia</div>
+        <div class="minc-i">🔒 PIX discreto — não aparece o nome</div>
+      </div>
+
+      <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:6px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:18px;">🛡️</span>
+        <div>
+          <div style="font-size:11px;font-weight:800;color:#22c55e;">GARANTIA DE ACESSO</div>
+          <div style="font-size:11px;color:rgba(240,240,240,0.6);margin-top:2px;">Não recebeu em 5 minutos? Devolvemos seu dinheiro.</div>
+        </div>
+      </div>
+
+      <button onclick="irParaUpsell()" id="btn1" class="mbtn">🔥 QUERO ACESSO — R$ 7,90</button>
+
+      <div class="mor"><span>NÃO QUER AGORA?</span></div>
+
+      <!-- DOWNSELL -->
+      <button onclick="gerarPix(4.90,'basico')" id="btnDown" class="mbtn-basic">
+        👀 Ver só as prévias por R$ 4,90
+      </button>
+
       <div class="msec">
         <div class="msec-i">🔒 SSL</div>
         <div class="msec-i">⚡ Imediato</div>
@@ -588,10 +612,44 @@ footer a{color:var(--red);text-decoration:none;}
       <p class="merr" id="err"></p>
     </div>
 
+    <!-- STEP UPSELL: +R$ 2,00 -->
+    <div id="s-upsell" style="display:none;text-align:center;">
+      <div style="font-size:32px;margin-bottom:8px;">🔥</div>
+      <h3 style="font-size:18px;font-weight:900;color:#fff;margin-bottom:6px;">Espera! Temos uma oferta especial</h3>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Por apenas <strong style="color:var(--red);">+R$ 2,00</strong> você desbloqueia:</p>
+
+      <div style="background:rgba(255,45,45,0.08);border:1px solid rgba(255,45,45,0.25);border-radius:8px;padding:16px;margin-bottom:16px;text-align:left;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px;">✨ ACESSO PREMIUM — R$ 9,90 total</div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>✅</span> Tudo do plano básico</div>
+          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>🔥</span> <strong>Conteúdo +18 sem censura</strong></div>
+          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>💬</span> <strong>Chat privado direto com ela</strong></div>
+          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>⭐</span> <strong>Acesso ao acervo completo</strong></div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;">
+        <span style="font-size:13px;color:var(--muted);text-decoration:line-through;">R$ 19,90</span>
+        <span style="font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">R$ 9,90</span>
+        <span style="background:var(--red);color:#fff;font-size:10px;font-weight:900;padding:3px 7px;border-radius:4px;">+R$ 2</span>
+      </div>
+      <p style="font-size:10px;color:var(--muted);margin-bottom:16px;">Adicione apenas R$ 2,00 agora</p>
+
+      <button onclick="gerarPix(9.90,'premium')" class="mbtn" style="margin-bottom:10px;">
+        ⭐ SIM! QUERO O PREMIUM POR R$ 9,90
+      </button>
+
+      <button onclick="gerarPix(7.90,'basico')" class="mbtn-basic" style="font-size:11px;padding:10px;">
+        Não, quero só o básico por R$ 7,90
+      </button>
+    </div>
+
+    <!-- STEP 2: QR CODE -->
     <div id="s2" style="display:none;text-align:center;">
       <div style="font-size:26px;margin-bottom:8px;">📱</div>
-      <h3 style="font-size:18px;font-weight:900;color:#fff;margin-bottom:6px;">Escaneie o QR Code PIX</h3>
-      <p style="font-size:11px;color:var(--muted);margin-bottom:12px;">Abra seu banco e escaneie</p>
+      <h3 style="font-size:18px;font-weight:900;color:#fff;margin-bottom:4px;">Escaneie o QR Code PIX</h3>
+      <p id="s2-valor" style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:10px;"></p>
+      <p style="font-size:11px;color:var(--muted);margin-bottom:12px;">Abra seu banco e escaneie abaixo</p>
       <div class="qrwrap"><img id="qrImg" src="" alt="QR" style="width:190px;height:190px;"/></div>
       <p style="font-size:10px;color:var(--muted);margin-bottom:6px;">Ou copie o código PIX:</p>
       <div class="pixrow">
@@ -599,18 +657,36 @@ footer a{color:var(--red);text-decoration:none;}
         <button onclick="copiarPix()" id="cpyBtn" class="pixcopy">COPIAR</button>
       </div>
       <div class="waiting"><div class="live-dot"></div>Aguardando pagamento...</div>
+      <div style="margin-top:12px;font-size:11px;color:rgba(240,240,240,0.4);line-height:1.6;">
+        ⚠️ PIX aparece como <strong style="color:rgba(240,240,240,0.6);">MisticPay</strong> — plataforma segura.<br/>
+        Acesso liberado automaticamente após confirmação.
+      </div>
     </div>
 
+    <!-- STEP 3: SUCESSO -->
     <div id="s3" style="display:none;text-align:center;">
       <div style="font-size:44px;margin-bottom:12px;">✅</div>
       <h3 style="font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;">Pagamento confirmado!</h3>
       <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">Acesso liberado. Clique abaixo:</p>
       <div class="sbtns">
-        <a href="https://t.me/+fH3uKvythKs2ODFh" target="_blank" class="sbtn sbtn-v"><span class="sbi">🔥</span><div><div class="sbt">ENTRAR NO CLUBE SECRETO</div><div class="sbs">Conteúdo exclusivo · acesso imediato</div></div><span class="sba">→</span></a>
-        <a href="https://t.me/enganadasburrinhas" target="_blank" class="sbtn sbtn-p"><span class="sbi">📱</span><div><div class="sbt">GRUPO DE PRÉVIAS</div><div class="sbs">Prévias gratuitas</div></div><span class="sba">→</span></a>
-        <a href="https://t.me/enganadasdoinstaavendas_bot" target="_blank" class="sbtn sbtn-s"><span class="sbi">💬</span><div><div class="sbt">SUPORTE</div><div class="sbs">Dúvidas? Fale conosco</div></div><span class="sba">→</span></a>
+        <a href="https://t.me/+fH3uKvythKs2ODFh" target="_blank" class="sbtn sbtn-v">
+          <span class="sbi">🔥</span>
+          <div><div class="sbt">ENTRAR NO CLUBE SECRETO</div><div class="sbs">Acesso imediato ao conteúdo</div></div>
+          <span class="sba">→</span>
+        </a>
+        <a href="https://t.me/enganadasburrinhas" target="_blank" class="sbtn sbtn-p">
+          <span class="sbi">📱</span>
+          <div><div class="sbt">GRUPO DE PRÉVIAS</div><div class="sbs">Prévias gratuitas</div></div>
+          <span class="sba">→</span>
+        </a>
+        <a href="https://t.me/enganadasdoinstaavendas_bot" target="_blank" class="sbtn sbtn-s">
+          <span class="sbi">💬</span>
+          <div><div class="sbt">SUPORTE</div><div class="sbs">Dúvidas? Fale conosco</div></div>
+          <span class="sba">→</span>
+        </a>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -640,25 +716,7 @@ footer a{color:var(--red);text-decoration:none;}
   tick();setInterval(tick,1000);
 })();
 
-// COUNTERS
-function animC(el,target,ms){
-  let v=0,s=target/(ms/16);
-  const timer=setInterval(()=>{
-    v=Math.min(v+s,target);
-    el.textContent=Math.round(v).toLocaleString('pt-BR');
-    if(v>=target)clearInterval(timer);
-  },16);
-}
-const sObs=new IntersectionObserver(e=>{
-  e.forEach(x=>{
-    if(x.isIntersecting){
-      const c1=document.getElementById('c1'),c2=document.getElementById('c2');
-      if(c1&&!c1.done){c1.done=1;animC(c1,2347,2000);}
-      if(c2&&!c2.done){c2.done=1;animC(c2,312,1600);}
-    }
-  });
-},{threshold:.3});
-const ss=document.querySelector('.sec');if(ss)sObs.observe(ss);
+// Counters fixed
 
 // SPOTS
 let spots=14;
@@ -724,11 +782,12 @@ function fecharModal(){
   document.getElementById('modal').style.display='none';
   document.body.style.overflow='';
   document.getElementById('s1').style.display='block';
+  document.getElementById('s-upsell').style.display='none';
   document.getElementById('s2').style.display='none';
   document.getElementById('s3').style.display='none';
   document.getElementById('err').style.display='none';
   const b=document.getElementById('btn1');
-  if(b){b.textContent='🔥 GERAR PIX — R$ 19,90';b.disabled=false;}
+  if(b){b.textContent='🔥 GERAR PIX — R$ 7,90';b.disabled=false;}
   clearInterval(window._pt);
 }
 function copiarPix(){
@@ -739,38 +798,71 @@ function copiarPix(){
   });
 }
 
+// Upsell flow
+function irParaUpsell() {
+  document.getElementById('s1').style.display='none';
+  document.getElementById('s-upsell').style.display='block';
+}
+
 let _tx=null;
-async function gerarPix(valor){
-  const amount=valor||19.90;
-  const isB=valor<=12;
-  const btn=isB?document.getElementById('btn2'):document.getElementById('btn1');
-  const err=document.getElementById('err');
-  err.style.display='none';
-  const orig=btn.textContent;
-  btn.textContent='⏳ Gerando PIX...';btn.disabled=true;
-  try{
-    const res=await fetch('/criar-pix',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount})});
-    const data=await res.json();
-    if(!res.ok)throw new Error(data.erro||'Erro ao gerar PIX');
-    _tx=data.transactionId;
-    document.getElementById('qrImg').src=data.qrCodeBase64;
-    document.getElementById('pixInput').value=data.copyPaste;
-    document.getElementById('s1').style.display='none';
-    document.getElementById('s2').style.display='block';
-    window._pt=setInterval(async()=>{
-      try{
-        const r=await fetch('/verificar-pix',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({transactionId:_tx})});
-        const d=await r.json();
-        if(d.status==='COMPLETO'){
+async function gerarPix(valor, tipo) {
+  const amount = valor || 7.90;
+
+  // Show loading on clicked button
+  const allBtns = document.querySelectorAll('.mbtn, .mbtn-basic');
+  allBtns.forEach(b => { b.disabled = true; });
+
+  // Hide current step, show QR step
+  document.getElementById('s1').style.display='none';
+  document.getElementById('s-upsell').style.display='none';
+  document.getElementById('s2').style.display='block';
+
+  // Update valor display
+  const valorEl = document.getElementById('s2-valor');
+  if(valorEl) {
+    if(tipo === 'premium') valorEl.textContent = '⭐ Plano Premium — R$ ' + amount.toFixed(2).replace('.',',');
+    else if(tipo === 'basico') valorEl.textContent = '✅ Plano Básico — R$ ' + amount.toFixed(2).replace('.',',');
+    else valorEl.textContent = 'R$ ' + amount.toFixed(2).replace('.',',');
+  }
+
+  const err = document.getElementById('err');
+  if(err) err.style.display='none';
+
+  try {
+    const res = await fetch('/criar-pix', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({amount})
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.erro || 'Erro ao gerar PIX');
+
+    _tx = data.transactionId;
+    document.getElementById('qrImg').src = data.qrCodeBase64;
+    document.getElementById('pixInput').value = data.copyPaste;
+
+    window._pt = setInterval(async() => {
+      try {
+        const r = await fetch('/verificar-pix', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({transactionId: _tx})
+        });
+        const d = await r.json();
+        if(d.status === 'COMPLETO') {
           clearInterval(window._pt);
           document.getElementById('s2').style.display='none';
           document.getElementById('s3').style.display='block';
         }
-      }catch(e){}
-    },5000);
-  }catch(e){
-    err.textContent='⚠️ '+e.message;err.style.display='block';
-    btn.textContent=orig;btn.disabled=false;
+      } catch(e) {}
+    }, 5000);
+
+  } catch(e) {
+    // On error go back to step 1
+    document.getElementById('s2').style.display='none';
+    document.getElementById('s1').style.display='block';
+    if(err) { err.textContent='⚠️ ' + e.message; err.style.display='block'; }
+    allBtns.forEach(b => { b.disabled = false; });
   }
 }
 </script>
