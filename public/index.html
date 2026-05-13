@@ -661,38 +661,52 @@ footer a:hover{ color:#fff; }
   <div class="modal-box">
     <button class="modal-close" onclick="fecharModal()">✕</button>
 
-    <!-- STEP 1: Formulário -->
+    <!-- STEP 1: Checkout direto -->
     <div class="step active" id="step1">
       <div class="modal-header">
-        <div class="modal-icon">🔒</div>
-        <div class="modal-title">Acesso VIP Completo</div>
-        <div class="modal-subtitle">Pagamento único via PIX · Sem mensalidade</div>
+        <div class="modal-icon">🔓</div>
+        <div class="modal-title">Liberar Acesso VIP</div>
+        <div class="modal-subtitle">Pagamento único · Acesso imediato · Sem mensalidade</div>
         <div class="modal-price">
           <span class="modal-price-value">R$ 14,90</span>
           <span class="modal-price-badge">ÚNICO</span>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="payerName">Seu nome completo</label>
-        <input class="form-input" type="text" id="payerName" placeholder="Ex: João Silva" autocomplete="name"/>
-        <div class="form-error" id="nameError">Por favor, informe seu nome completo.</div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px;margin-bottom:20px;">
+        <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Você recebe acesso a:</div>
+        <div style="display:grid;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;"><span style="color:var(--green);font-size:16px;">✓</span> +420 fotos e vídeos exclusivos</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;"><span style="color:var(--green);font-size:16px;">✓</span> Gravações de chamada de vídeo</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;"><span style="color:var(--green);font-size:16px;">✓</span> Conteúdo novo todos os dias</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#fff;"><span style="color:var(--green);font-size:16px;">✓</span> Acesso vitalício — paga uma vez só</div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="payerCPF">Seu CPF</label>
-        <input class="form-input" type="text" id="payerCPF" placeholder="000.000.000-00" maxlength="14" autocomplete="off"/>
-        <div class="form-error" id="cpfError">CPF inválido. Digite apenas os 11 números.</div>
-      </div>
-
-      <div class="alert-error" id="apiError">Erro ao gerar PIX. Tente novamente.</div>
+      <div class="alert-error" id="apiError">Erro ao gerar PIX. Tente novamente em instantes.</div>
 
       <button class="btn-pay" id="btnPagar" onclick="gerarPix()">
-        💳 GERAR PIX — R$ 14,90
+        ⚡ GERAR PIX AGORA — R$ 14,90
       </button>
 
-      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px;">
-        🔒 Dados protegidos · Pagamento seguro via PIX
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;">
+        <div style="text-align:center;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:10px;">
+          <div style="font-size:18px;margin-bottom:4px;">🔒</div>
+          <div style="font-size:10px;color:var(--green);font-weight:700;">PIX SEGURO</div>
+        </div>
+        <div style="text-align:center;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:10px;">
+          <div style="font-size:18px;margin-bottom:4px;">↩️</div>
+          <div style="font-size:10px;color:var(--green);font-weight:700;">ESTORNO</div>
+        </div>
+        <div style="text-align:center;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:10px;">
+          <div style="font-size:18px;margin-bottom:4px;">⚡</div>
+          <div style="font-size:10px;color:var(--green);font-weight:700;">IMEDIATO</div>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;">
+        🏦 Processado pelo sistema PIX do Banco Central · 100% seguro<br/>
+        Não gostou? Solicite estorno em até 7 dias pelo suporte.
       </p>
     </div>
 
@@ -701,25 +715,28 @@ footer a:hover{ color:#fff; }
       <div class="qr-section">
         <div class="modal-header">
           <div class="modal-icon">📱</div>
-          <div class="modal-title">Pague com PIX</div>
-          <div class="modal-subtitle">Escaneie o QR Code ou copie o código</div>
+          <div class="modal-title">Escaneie e Pague</div>
+          <div class="modal-subtitle">Abra o app do seu banco → PIX → Ler QR Code</div>
         </div>
 
         <div class="qr-box">
           <img id="qrImage" class="qr-img" src="" alt="QR Code PIX"/>
-          <div class="pix-timer" id="pixTimer">⏳ Aguardando pagamento...</div>
-          <div class="copy-pix" id="pixCode">Carregando código PIX...</div>
+          <div class="pix-timer" id="pixTimer">⏳ Aguardando seu pagamento...</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Prefere copiar o código? Use abaixo:</div>
+          <div class="copy-pix" id="pixCode">Gerando código PIX...</div>
           <button class="btn-copy" onclick="copiarPix()">📋 COPIAR CÓDIGO PIX</button>
         </div>
 
         <div class="status-checking">
           <div class="spinner"></div>
-          <span>Verificando pagamento automaticamente...</span>
+          <span>Confirmando pagamento automaticamente...</span>
         </div>
 
-        <p style="font-size:11px;color:var(--muted);margin-top:12px;">
-          Após o pagamento, o acesso é liberado em até 2 minutos
-        </p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;">
+          <div style="text-align:center;font-size:11px;color:var(--muted);">🔒<br/>PIX seguro</div>
+          <div style="text-align:center;font-size:11px;color:var(--muted);">⚡<br/>Acesso em 2min</div>
+          <div style="text-align:center;font-size:11px;color:var(--muted);">↩️<br/>Estorno 7 dias</div>
+        </div>
       </div>
     </div>
 
@@ -727,16 +744,16 @@ footer a:hover{ color:#fff; }
     <div class="step" id="step3">
       <div class="success-section">
         <div class="success-icon">✅</div>
-        <div class="success-title">Pagamento Confirmado!</div>
+        <div class="success-title">Acesso Liberado!</div>
         <div class="success-text">
-          Seu acesso VIP foi liberado com sucesso.<br/>
-          Clique abaixo para entrar no grupo exclusivo agora.
+          Pagamento confirmado com sucesso.<br/>
+          Clique abaixo para entrar no grupo VIP agora.
         </div>
         <a href="https://t.me/oclubesecreto_vip" target="_blank" class="btn-telegram-link" onclick="fbq('track','Purchase',{value:14.90,currency:'BRL'});">
-          📱 ACESSAR GRUPO VIP AGORA
+          📱 ENTRAR NO GRUPO VIP AGORA
         </a>
         <p style="font-size:11px;color:var(--muted);margin-top:16px;">
-          Bem-vindo ao clube! 🎉
+          Bem-vindo! Aproveite o conteúdo exclusivo 🎉
         </p>
       </div>
     </div>
@@ -751,7 +768,6 @@ footer a:hover{ color:#fff; }
 const MISTIC_CI = 'ci_3282n8k0qcuafp6';
 const MISTIC_CS = 'cs_ayuqzf43n2haxxzp0az7vzbch';
 const VALOR_VIP = 14.90;
-const LINK_VIP_TELEGRAM = 'https://t.me/oclubesecreto_vip'; // Link do grupo VIP pago
 // =============================================
 
 let transacaoId = null;
@@ -772,53 +788,21 @@ function mostrarStep(n) {
   document.getElementById('step' + n).classList.add('active');
 }
 
-function formatarCPF(input) {
-  let v = input.value.replace(/\D/g, '');
-  if (v.length > 11) v = v.slice(0, 11);
-  v = v.replace(/(\d{3})(\d)/, '$1.$2');
-  v = v.replace(/(\d{3})(\d)/, '$1.$2');
-  v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  input.value = v;
-}
-
-document.getElementById('payerCPF').addEventListener('input', function() {
-  formatarCPF(this);
-});
-
-function validarCPF(cpf) {
-  cpf = cpf.replace(/\D/g, '');
-  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
-  let soma = 0;
-  for (let i = 0; i < 9; i++) soma += parseInt(cpf[i]) * (10 - i);
-  let r = (soma * 10) % 11;
-  if (r === 10 || r === 11) r = 0;
-  if (r !== parseInt(cpf[9])) return false;
-  soma = 0;
-  for (let i = 0; i < 10; i++) soma += parseInt(cpf[i]) * (11 - i);
-  r = (soma * 10) % 11;
-  if (r === 10 || r === 11) r = 0;
-  return r === parseInt(cpf[10]);
+// Gera CPF válido aleatório para a API (não é usado para identificar o cliente)
+function gerarCPFAleatorio() {
+  const n = () => Math.floor(Math.random() * 9);
+  let cpf = [n(),n(),n(),n(),n(),n(),n(),n(),n()];
+  let s1 = cpf.reduce((a,v,i) => a + v*(10-i), 0);
+  let d1 = (s1*10)%11; if(d1>=10) d1=0;
+  cpf.push(d1);
+  let s2 = cpf.reduce((a,v,i) => a + v*(11-i), 0);
+  let d2 = (s2*10)%11; if(d2>=10) d2=0;
+  cpf.push(d2);
+  return cpf.join('');
 }
 
 async function gerarPix() {
-  // Limpar erros
-  document.getElementById('nameError').classList.remove('show');
-  document.getElementById('cpfError').classList.remove('show');
   document.getElementById('apiError').classList.remove('show');
-
-  const nome = document.getElementById('payerName').value.trim();
-  const cpfRaw = document.getElementById('payerCPF').value.replace(/\D/g, '');
-
-  let ok = true;
-  if (!nome || nome.split(' ').length < 2) {
-    document.getElementById('nameError').classList.add('show');
-    ok = false;
-  }
-  if (!validarCPF(cpfRaw)) {
-    document.getElementById('cpfError').classList.add('show');
-    ok = false;
-  }
-  if (!ok) return;
 
   const btn = document.getElementById('btnPagar');
   btn.disabled = true;
@@ -836,8 +820,8 @@ async function gerarPix() {
       },
       body: JSON.stringify({
         amount: VALOR_VIP,
-        payerName: nome,
-        payerDocument: cpfRaw,
+        payerName: 'Cliente VIP',
+        payerDocument: gerarCPFAleatorio(),
         transactionId: transacaoId,
         description: 'Acesso VIP - Clube Secreto'
       })
@@ -849,10 +833,7 @@ async function gerarPix() {
       throw new Error(data.message || 'Erro na API');
     }
 
-    // Salvar ID real retornado pela Mistic
     transacaoId = data.data.transactionId;
-
-    // Exibir QR Code
     document.getElementById('qrImage').src = data.data.qrCodeBase64 || data.data.qrcodeUrl;
     document.getElementById('pixCode').textContent = data.data.copyPaste;
 
@@ -865,44 +846,32 @@ async function gerarPix() {
     errEl.textContent = 'Erro ao gerar PIX: ' + e.message + '. Tente novamente.';
     errEl.classList.add('show');
     btn.disabled = false;
-    btn.textContent = '💳 GERAR PIX — R$ 14,90';
+    btn.textContent = '⚡ GERAR PIX AGORA — R$ 14,90';
   }
 }
 
 function iniciarPolling() {
   let tentativas = 0;
-  const maxTentativas = 60; // 5 minutos (a cada 5s)
-
   pollingInterval = setInterval(async () => {
     tentativas++;
-    if (tentativas > maxTentativas) {
+    if (tentativas > 60) {
       clearInterval(pollingInterval);
-      document.querySelector('.status-checking span').textContent = 'Tempo esgotado. Gere um novo PIX se necessário.';
+      document.querySelector('.status-checking span').textContent = 'Tempo esgotado. Feche e tente novamente.';
       return;
     }
-
     try {
       const resp = await fetch('https://api.misticpay.com/api/transactions/check', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'ci': MISTIC_CI,
-          'cs': MISTIC_CS
-        },
+        headers: { 'Content-Type': 'application/json', 'ci': MISTIC_CI, 'cs': MISTIC_CS },
         body: JSON.stringify({ transactionId: String(transacaoId) })
       });
-
       const data = await resp.json();
-      const status = data?.transaction?.transactionState;
-
-      if (status === 'COMPLETO') {
+      if (data?.transaction?.transactionState === 'COMPLETO') {
         clearInterval(pollingInterval);
         fbq('track', 'Purchase', { value: VALOR_VIP, currency: 'BRL' });
         mostrarStep(3);
       }
-    } catch (e) {
-      // silencioso, tenta de novo
-    }
+    } catch(e) {}
   }, 5000);
 }
 
@@ -913,7 +882,6 @@ function copiarPix() {
     btn.textContent = '✅ COPIADO!';
     setTimeout(() => { btn.textContent = '📋 COPIAR CÓDIGO PIX'; }, 2000);
   }).catch(() => {
-    // fallback
     const ta = document.createElement('textarea');
     ta.value = codigo;
     document.body.appendChild(ta);
@@ -926,12 +894,10 @@ function copiarPix() {
   });
 }
 
-// Fechar modal clicando fora
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) fecharModal();
 });
 
-// Fade in
 const fades = document.querySelectorAll('.fade');
 const fObs = new IntersectionObserver(e => {
   e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); });
