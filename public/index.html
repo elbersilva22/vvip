@@ -18,15 +18,15 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '2091570818082414');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name:'Clube Secreto',value:7.90,currency:'BRL'});
+fbq('track', 'ViewContent', {content_name:'Clube Secreto',value:14.90,currency:'BRL'});
 </script>
 
 <script>
 function trackInitiateCheckout(valor){
-  if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:valor||7.90,currency:'BRL'});
+  if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:valor||14.90,currency:'BRL'});
 }
 function trackPurchase(valor){
-  if(typeof fbq!=='undefined') fbq('track','Purchase',{value:valor||7.90,currency:'BRL'});
+  if(typeof fbq!=='undefined') fbq('track','Purchase',{value:valor||14.90,currency:'BRL'});
 }
 function trackLead(){
   if(typeof fbq!=='undefined') fbq('track','Lead');
@@ -344,6 +344,66 @@ footer a{color:var(--red);text-decoration:none;}
 
 .fade{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s;}
 .fade.in{opacity:1;transform:none;}
+
+/* BLUR PREVIEWS */
+.previews-sec{padding:48px 20px 40px;background:linear-gradient(180deg,var(--dark) 0%,rgba(17,17,17,0.98) 100%);}
+.previews-label{text-align:center;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.previews-subtitle{text-align:center;font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-.3px;}
+.previews-sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:28px;}
+.previews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:700px;margin:0 auto 28px;}
+@media(max-width:480px){.previews-grid{gap:8px;}}
+.preview-card{
+  position:relative;border-radius:14px;overflow:hidden;
+  aspect-ratio:3/4;
+  border:1px solid rgba(255,45,45,.18);
+  background:var(--panel);
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+}
+.preview-card:hover{
+  transform:scale(1.045) translateY(-4px);
+  border-color:rgba(255,45,45,.5);
+  box-shadow:0 12px 48px rgba(255,45,45,.15), 0 4px 24px rgba(0,0,0,.6);
+}
+.preview-bg{
+  position:absolute;inset:0;
+  filter:blur(22px) brightness(.45) saturate(1.2);
+  transform:scale(1.1);
+  background-size:cover;background-position:center;
+  transition:filter .4s;
+}
+.preview-card:hover .preview-bg{filter:blur(18px) brightness(.5) saturate(1.4);}
+.preview-noise{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity:.4;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+.preview-lock{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;
+  background:radial-gradient(ellipse at center, rgba(255,45,45,.08) 0%, transparent 70%);
+}
+.preview-lock-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(0,0,0,.55);border:1.5px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+  backdrop-filter:blur(4px);
+  transition:transform .3s, background .3s;
+}
+.preview-card:hover .preview-lock-icon{transform:scale(1.15);background:rgba(255,45,45,.2);border-color:rgba(255,45,45,.4);}
+.preview-lock-txt{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.preview-gradient{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(8,8,8,.85) 100%);
+}
+.preview-bottom{position:absolute;bottom:12px;left:12px;right:12px;}
+.preview-tag{display:inline-block;background:rgba(255,45,45,.9);color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:4px;}
+.previews-cta{text-align:center;}
 </style>
 
 
@@ -366,7 +426,7 @@ function trackPurchase(valor) {
 <body>
 
 <!-- ANN BAR -->
-<div class="ann">🔥 OFERTA RELÂMPAGO — Acesso por apenas R$ 7,90 · Últimas vagas!</div>
+<div class="ann">🔥 OFERTA RELÂMPAGO — Acesso por apenas R$ 14,90 · Últimas vagas!</div>
 
 <!-- HEADER -->
 <header class="hdr">
@@ -380,14 +440,14 @@ function trackPurchase(valor) {
   <div class="hero-overlay"></div>
 
   <div class="hero-content fade">
-    <div class="hero-tag">🔒 ACESSO RESTRITO · APENAS MEMBROS</div>
+    <div class="hero-tag">🔒 ÁREA PRIVADA · ACESSO LIMITADO</div>
 
     <h1 class="hero-h1">
-      O que ela guarda<br/>
-      <em>só pra quem entra aqui</em>
+      Área Privada<br/>
+      <em>Liberada por Tempo Limitado</em>
     </h1>
 
-    <p class="hero-p">Fotos e vídeos íntimos que não estão em nenhuma rede. Conteúdo novo todo dia. Acesso imediato após o PIX.</p>
+    <p class="hero-p">Acesso imediato ao conteúdo exclusivo. Disponível apenas enquanto os acessos estiverem ativos.</p>
 
     <div class="pills">
       <div class="pill"><span class="g">✓</span> PIX seguro</div>
@@ -396,9 +456,9 @@ function trackPurchase(valor) {
       <div class="pill"><span class="g">✓</span> Funciona no celular</div>
     </div>
 
-    <a href="#" onclick="fbq('track','InitiateCheckout',{value:7.90,currency:'BRL'});document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta">
-      🔓 QUERO ACESSO AGORA — R$ 7,90
-      <small>PIX · Sem cadastro · Acesso imediato</small>
+    <a href="#" onclick="fbq('track','InitiateCheckout',{value:14.90,currency:'BRL'});document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta">
+      LIBERAR MEU ACESSO AGORA
+      <small>PIX · Sem cadastro · Liberação imediata</small>
     </a>
 
     <a href="https://t.me/oclubesecreto" target="_blank" class="btn-prev">
@@ -421,26 +481,79 @@ function trackPurchase(valor) {
 <!-- STRIP -->
 <div class="strip">
   <div class="strip-inner">
-    <span class="si"><span class="y">★★★★★</span> 4.9/5 — mais de 800 avaliações</span>
-    <span class="si">🔥 +2.300 membros ativos</span>
-    <span class="si">⚡ Acesso em menos de 1 minuto</span>
+    <span class="si"><span class="y">★★★★★</span> 4.9/5 — mais de 1.200 avaliações</span>
+    <span class="si">🔥 +3.000 acessos liberados</span>
+    <span class="si">⚡ Liberação imediata após confirmação</span>
     <span class="si">🔒 Pagamento 100% discreto</span>
     <span class="si">📱 Funciona no Android e iPhone</span>
     <span class="si">✅ Sem cadastro · sem dados pessoais</span>
-    <span class="si"><span class="y">★★★★★</span> 4.9/5 — mais de 800 avaliações</span>
-    <span class="si">🔥 +2.300 membros ativos</span>
-    <span class="si">⚡ Acesso em menos de 1 minuto</span>
+    <span class="si"><span class="y">★★★★★</span> 4.9/5 — mais de 1.200 avaliações</span>
+    <span class="si">🔥 +3.000 acessos liberados</span>
+    <span class="si">⚡ Liberação imediata após confirmação</span>
     <span class="si">🔒 Pagamento 100% discreto</span>
     <span class="si">📱 Funciona no Android e iPhone</span>
     <span class="si">✅ Sem cadastro · sem dados pessoais</span>
   </div>
 </div>
 
+<!-- BLUR PREVIEWS -->
+<section class="previews-sec fade">
+  <div class="previews-label">👁 PRÉVIA DO CONTEÚDO</div>
+  <h2 class="previews-subtitle">Veja o que te espera dentro</h2>
+  <p class="previews-sub">Conteúdo exclusivo — desbloqueie para ver tudo</p>
+  <div class="previews-grid">
+
+    <!-- Card 1 -->
+    <div class="preview-card" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';">
+      <div class="preview-bg" style="background:linear-gradient(135deg,#c0392b 0%,#8e1a12 30%,#4a0a0a 60%,#1a0505 100%);"></div>
+      <div class="preview-noise"></div>
+      <div class="preview-gradient"></div>
+      <div class="preview-lock">
+        <div class="preview-lock-icon">🔒</div>
+        <span class="preview-lock-txt">Censurado</span>
+      </div>
+      <div class="preview-bottom"><span class="preview-tag">Exclusivo</span></div>
+    </div>
+
+    <!-- Card 2 (destaque central) -->
+    <div class="preview-card" style="border-color:rgba(255,45,45,.35);box-shadow:0 0 40px rgba(255,45,45,.12);" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';">
+      <div class="preview-bg" style="background:linear-gradient(160deg,#6b0f1a 0%,#b91c1c 25%,#7f1d1d 55%,#0d0002 100%);"></div>
+      <div class="preview-noise"></div>
+      <div class="preview-gradient"></div>
+      <div class="preview-lock">
+        <div class="preview-lock-icon">🔥</div>
+        <span class="preview-lock-txt">+18</span>
+      </div>
+      <div class="preview-bottom"><span class="preview-tag">Novo hoje</span></div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="preview-card" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';">
+      <div class="preview-bg" style="background:linear-gradient(120deg,#450a0a 0%,#991b1b 40%,#7c2d12 70%,#1c0a00 100%);"></div>
+      <div class="preview-noise"></div>
+      <div class="preview-gradient"></div>
+      <div class="preview-lock">
+        <div class="preview-lock-icon">🔒</div>
+        <span class="preview-lock-txt">Privado</span>
+      </div>
+      <div class="preview-bottom"><span class="preview-tag">VIP</span></div>
+    </div>
+  </div>
+
+  <div class="previews-cta">
+    <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">
+      🔓 LIBERAR MEU ACESSO AGORA
+      <small>PIX · Sem cadastro · Liberação imediata</small>
+    </a>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;">+3.000 acessos liberados · Atualizações frequentes</p>
+  </div>
+</section>
+
 <!-- STATS -->
 <section class="sec" style="background:var(--panel);border-bottom:1px solid var(--border);">
   <div class="sec-inner wide">
     <div class="stats">
-      <div class="stat fade"><div class="stat-n">2.347</div><div class="stat-l">Membros ativos</div></div>
+      <div class="stat fade"><div class="stat-n">3.127</div><div class="stat-l">Membros ativos</div></div>
       <div class="stat fade"><div class="stat-n">400+</div><div class="stat-l">Fotos e vídeos</div></div>
       <div class="stat fade"><div class="stat-n">4.9★</div><div class="stat-l">Avaliação média</div></div>
       <div class="stat fade"><div class="stat-n">312</div><div class="stat-l">Online agora</div></div>
@@ -463,8 +576,8 @@ function trackPurchase(valor) {
     </div>
     <div style="text-align:center;">
       <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">
-        🔓 QUERO ACESSO — R$ 7,90
-        <small>PIX · Sem cadastro · Acesso imediato</small>
+        LIBERAR MEU ACESSO AGORA
+        <small>PIX · Sem cadastro · Liberação imediata</small>
       </a>
     </div>
   </div>
@@ -492,17 +605,17 @@ function trackPurchase(valor) {
     <div class="testis">
       <div class="testi fade">
         <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Fiquei desconfiado no começo, achei que era golpe. Vi as prévias e resolvi tentar. Melhor decisão. Conteúdo de verdade, acesso na hora. Já indiquei para amigos."</p>
+        <p class="t-text">"Entrei achando que ia ser igual a todos os outros, mas me surpreendeu muito. Conteúdo diferente, sem enrolação, acesso liberou na hora. Vale muito."</p>
         <div class="t-auth"><div class="t-av">R</div><div><div class="t-name">Rafael M.</div><div class="t-info">São Paulo · membro há 3 meses</div></div></div>
       </div>
       <div class="testi fade">
         <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Tenho 47 anos e nunca tinha feito isso antes. Fiz o PIX com um pouco de receio, mas o acesso foi imediato e o conteúdo é excelente. Muito melhor do que esperava."</p>
+        <p class="t-text">"Fiz o PIX com um pé atrás, mas o acesso caiu em menos de 1 minuto. Não esperava esse nível de conteúdo. Vale cada centavo, sem exagero."</p>
         <div class="t-auth"><div class="t-av">D</div><div><div class="t-name">Diego S.</div><div class="t-info">Rio de Janeiro · membro há 2 meses</div></div></div>
       </div>
       <div class="testi fade">
         <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Entrei primeiro nas prévias para ver se era sério. Depois paguei sem pensar duas vezes. O conteúdo completo é muito superior. Vale muito mais do que cobram."</p>
+        <p class="t-text">"Vi as prévias grátis, gostei, paguei. Simples assim. O conteúdo completo é outra coisa — muito acima do que eu esperava. Recomendo sem hesitar."</p>
         <div class="t-auth"><div class="t-av">L</div><div><div class="t-name">Lucas T.</div><div class="t-info">Belo Horizonte · membro há 1 mês</div></div></div>
       </div>
     </div>
@@ -519,11 +632,11 @@ function trackPurchase(valor) {
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">O pagamento aparece na fatura do banco?<span class="faq-icon">+</span></button><div class="faq-a">Não. O pagamento é via PIX — aparece só como transferência PIX, sem identificar o tipo de conteúdo. Totalmente discreto. Sua privacidade está protegida.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">Como recebo o acesso depois de pagar?<span class="faq-icon">+</span></button><div class="faq-a">Assim que o pagamento é confirmado — geralmente menos de 1 minuto — o link de acesso aparece na tela automaticamente. Clica, entra no grupo e já começa a ver o conteúdo.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">É conteúdo de verdade ou é golpe?<span class="faq-icon">+</span></button><div class="faq-a">Assista o vídeo nessa página — ela mesma explica o que tem dentro. O grupo de prévias gratuito também existe para você ver antes de pagar. Não pedimos confiança cega.</div></div>
-      <div class="faq"><button class="faq-q" onclick="tFaq(this)">Tem mensalidade ou é pagamento único?<span class="faq-icon">+</span></button><div class="faq-a">R$ 7,90 de pagamento único — sem mensalidade, sem renovação automática. Paga uma vez e acessa tudo, incluindo o conteúdo novo que é adicionado diariamente.</div></div>
+      <div class="faq"><button class="faq-q" onclick="tFaq(this)">Tem mensalidade ou é pagamento único?<span class="faq-icon">+</span></button><div class="faq-a">R$ 14,90 de pagamento único — sem mensalidade, sem renovação automática. Paga uma vez e acessa tudo, incluindo o conteúdo novo que é adicionado diariamente.</div></div>
       <div class="faq"><button class="faq-q" onclick="tFaq(this)">Minha família vai saber?<span class="faq-icon">+</span></button><div class="faq-a">Não. O Telegram tem senha e função de arquivar conversas. O PIX não identifica o destino na fatura. Use o Telegram com senha habilitada para maior privacidade.</div></div>
     </div>
     <div style="text-align:center;margin-top:28px;">
-      <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">🔓 QUERO ENTRAR — R$ 7,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
+      <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:400px;">LIBERAR MEU ACESSO AGORA<small>PIX · Sem cadastro · Liberação imediata</small></a>
     </div>
   </div>
 </section>
@@ -535,11 +648,11 @@ function trackPurchase(valor) {
   <p style="font-size:13px;color:var(--muted);margin:10px 0 18px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7;">O grupo tem número limitado de vagas. Quando encerra, o link fecha — sem exceção e sem lista de espera.</p>
   <div class="cds">
     <div class="cd"><div class="cd-n" id="cdh">00</div><div class="cd-l">Horas</div></div>
-    <div class="cd"><div class="cd-n" id="cdm">23</div><div class="cd-l">Min</div></div>
+    <div class="cd"><div class="cd-n" id="cdm">14</div><div class="cd-l">Min</div></div>
     <div class="cd"><div class="cd-n" id="cds">59</div><div class="cd-l">Seg</div></div>
   </div>
-  <div class="spots-b"><div class="live-dot"></div>⚡ Apenas <span id="spots" style="margin:0 4px;font-weight:900;">23</span> vagas agora</div>
-  <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:380px;">🔓 GARANTIR MINHA VAGA — R$ 7,90<small>PIX · Sem cadastro · Acesso imediato</small></a>
+  <div class="spots-b"><div class="live-dot"></div>⚡ Apenas <span id="spots" style="margin:0 4px;font-weight:900;">14</span> vagas agora</div>
+  <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:380px;">LIBERAR MEU ACESSO AGORA<small>PIX · Sem cadastro · Liberação imediata</small></a>
 </section>
 
 <!-- TRUST BAR -->
@@ -561,7 +674,7 @@ function trackPurchase(valor) {
     <h2 class="sec-h">Escolha como quer entrar</h2>
     <div class="tg-btns">
       <a href="#" onclick="abrirModal();return false;" class="tg-btn tg-btn-p">
-        <span class="tg-bi">🔥</span><div class="tg-bt"><div class="tg-bt-t">COMPRAR ACESSO VIP — R$ 7,90</div><div class="tg-bt-s">PIX · acesso imediato</div></div><span class="tg-arr">→</span>
+        <span class="tg-bi">🔥</span><div class="tg-bt"><div class="tg-bt-t">LIBERAR MEU ACESSO — R$ 14,90</div><div class="tg-bt-s">PIX · liberação imediata</div></div><span class="tg-arr">→</span>
       </a>
       <a href="https://t.me/oclubesecreto" target="_blank" class="tg-btn tg-btn-s">
         <span class="tg-bi">👁</span><div class="tg-bt"><div class="tg-bt-t">VER PRÉVIAS GRÁTIS</div><div class="tg-bt-s">Entrada livre · sem compromisso</div></div><span class="tg-arr">→</span>
@@ -581,7 +694,7 @@ function trackPurchase(valor) {
     <h2 class="sec-h" style="margin-bottom:10px;">Simples: ou você entra,<br/>ou fica de fora.</h2>
     <p style="font-size:13px;color:var(--muted);margin-bottom:28px;">Ela adiciona conteúdo novo todo dia. Cada dia que passa é conteúdo que você perdeu.</p>
     <a href="#" onclick="document.getElementById('modal').style.display='flex';document.body.style.overflow='hidden';return false;" class="btn-cta" style="display:inline-block;max-width:380px;">
-      🔓 ENTRAR AGORA — R$ 7,90
+      LIBERAR MEU ACESSO AGORA
       <small>PIX · Sem cadastro · Acesso em 1 minuto</small>
     </a>
   </div>
@@ -596,10 +709,10 @@ function trackPurchase(valor) {
 <!-- STICKY BAR -->
 <div class="sticky" id="sticky">
   <div class="sticky-left">
-    <div class="t">🔒 Clube Secreto — R$ 7,90</div>
+    <div class="t">🔒 Área Privada — R$ 14,90</div>
     <div class="s">PIX · Acesso imediato · 100% discreto</div>
   </div>
-  <a href="#" onclick="abrirModal();return false;" class="sticky-btn">🔓 ENTRAR</a>
+  <a href="#" onclick="abrirModal();return false;" class="sticky-btn">LIBERAR ACESSO</a>
 </div>
 
 <!-- TOASTS -->
@@ -610,13 +723,13 @@ function trackPurchase(valor) {
   <div class="mbox" style="max-height:90vh;overflow-y:auto;">
     <button class="mclose" onclick="fecharModal()">✕</button>
 
-    <!-- STEP 1: OFERTA PRINCIPAL R$ 7,90 -->
+    <!-- STEP 1: OFERTA PRINCIPAL R$ 14,90 -->
     <div id="s1">
       <div class="mtop">
         <div class="mico">🔒</div>
         <div class="mtit">Clube Secreto — Acesso VIP</div>
-        <div class="mold">De R$ 19,90</div>
-        <div class="mprice"><span class="mpv">R$ 7,90</span><span class="mbadge">-60%</span></div>
+        <div class="mold">De R$ 39,90</div>
+        <div class="mprice"><span class="mpv">R$ 14,90</span><span class="mbadge">-62%</span></div>
         <div class="msub">Pagamento único · Sem mensalidade · Acesso imediato</div>
       </div>
 
@@ -624,10 +737,10 @@ function trackPurchase(valor) {
         <span>ℹ️</span><span>O PIX aparece como <strong style="color:#22c55e;">MisticPay</strong> — plataforma de pagamento segura e verificada.</span>
       </div>
 
-      <div class="mtimer"><div class="live-dot"></div>⚡ Oferta válida por <span id="ot" style="margin:0 4px;font-weight:900;">09:59</span></div>
+      <div class="mtimer"><div class="live-dot"></div>⚡ Acesso disponível por <span id="ot" style="margin:0 4px;font-weight:900;">09:59</span></div>
 
       <div class="minc">
-        <div class="minc-t">O que você recebe por R$ 7,90:</div>
+        <div class="minc-t">O que você recebe por R$ 14,90:</div>
         <div class="minc-i">✅ Acesso ao grupo VIP no Telegram</div>
         <div class="minc-i">✅ Fotos e vídeos exclusivos</div>
         <div class="minc-i">✅ Conteúdo novo todo dia</div>
@@ -642,14 +755,9 @@ function trackPurchase(valor) {
         </div>
       </div>
 
-      <button onclick="irParaUpsell()" id="btn1" class="mbtn">🔥 QUERO ACESSO — R$ 7,90</button>
+      <button onclick="gerarPix(14.90,'basico')" id="btn1" class="mbtn">🔥 LIBERAR MEU ACESSO — R$ 14,90</button>
 
-      <div class="mor"><span>NÃO QUER AGORA?</span></div>
 
-      <!-- DOWNSELL -->
-      <button onclick="gerarPix(4.90,'basico')" id="btnDown" class="mbtn-basic">
-        👀 Ver só as prévias por R$ 4,90
-      </button>
 
       <div class="msec">
         <div class="msec-i">🔒 SSL</div>
@@ -659,39 +767,6 @@ function trackPurchase(valor) {
       </div>
       <p class="merr" id="err"></p>
     </div>
-
-    <!-- STEP UPSELL: +R$ 2,00 -->
-    <div id="s-upsell" style="display:none;text-align:center;">
-      <div style="font-size:32px;margin-bottom:8px;">🔥</div>
-      <h3 style="font-size:18px;font-weight:900;color:#fff;margin-bottom:6px;">Espera! Temos uma oferta especial</h3>
-      <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Por apenas <strong style="color:var(--red);">+R$ 2,00</strong> você desbloqueia:</p>
-
-      <div style="background:rgba(255,45,45,0.08);border:1px solid rgba(255,45,45,0.25);border-radius:8px;padding:16px;margin-bottom:16px;text-align:left;">
-        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px;">✨ ACESSO PREMIUM — R$ 9,90 total</div>
-        <div style="display:flex;flex-direction:column;gap:7px;">
-          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>✅</span> Tudo do plano básico</div>
-          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>🔥</span> <strong>Conteúdo +18 sem censura</strong></div>
-          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>💬</span> <strong>Chat privado direto com ela</strong></div>
-          <div style="font-size:12px;color:rgba(240,240,240,0.85);display:flex;align-items:center;gap:7px;"><span>⭐</span> <strong>Acesso ao acervo completo</strong></div>
-        </div>
-      </div>
-
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;">
-        <span style="font-size:13px;color:var(--muted);text-decoration:line-through;">R$ 19,90</span>
-        <span style="font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">R$ 9,90</span>
-        <span style="background:var(--red);color:#fff;font-size:10px;font-weight:900;padding:3px 7px;border-radius:4px;">+R$ 2</span>
-      </div>
-      <p style="font-size:10px;color:var(--muted);margin-bottom:16px;">Adicione apenas R$ 2,00 agora</p>
-
-      <button onclick="gerarPix(9.90,'premium')" class="mbtn" style="margin-bottom:10px;">
-        ⭐ SIM! QUERO O PREMIUM POR R$ 9,90
-      </button>
-
-      <button onclick="gerarPix(7.90,'basico')" class="mbtn-basic" style="font-size:11px;padding:10px;">
-        Não, quero só o básico por R$ 7,90
-      </button>
-    </div>
-
     <!-- STEP 2: QR CODE -->
     <div id="s2" style="display:none;text-align:center;">
       <div style="font-size:26px;margin-bottom:8px;">📱</div>
@@ -705,6 +780,9 @@ function trackPurchase(valor) {
         <button onclick="copiarPix()" id="cpyBtn" class="pixcopy">COPIAR</button>
       </div>
       <div class="waiting"><div class="live-dot"></div>Aguardando pagamento...</div>
+      <div style="margin-top:10px;background:rgba(255,165,0,.08);border:1px solid rgba(255,165,0,.25);border-radius:6px;padding:9px 13px;font-size:11px;color:rgba(255,200,80,.9);font-weight:600;text-align:center;">
+        ⚠️ Seu acesso expira automaticamente se o pagamento não for concluído em alguns minutos.
+      </div>
       <div style="margin-top:12px;font-size:11px;color:rgba(240,240,240,0.4);line-height:1.6;">
         ⚠️ PIX aparece como <strong style="color:rgba(240,240,240,0.6);">MisticPay</strong> — plataforma segura.<br/>
         Acesso liberado automaticamente após confirmação.
@@ -816,7 +894,7 @@ setInterval(showToast,8500);
 // TRACK PURCHASE — chamado quando PIX é confirmado
 function trackPurchase(amount){
   fbq('track', 'Purchase', {
-    value: amount || 7.90,
+    value: amount || 14.90,
     currency: 'BRL'
   });
 }
@@ -838,12 +916,11 @@ function fecharModal(){
   document.getElementById('modal').style.display='none';
   document.body.style.overflow='';
   document.getElementById('s1').style.display='block';
-  document.getElementById('s-upsell').style.display='none';
   document.getElementById('s2').style.display='none';
   document.getElementById('s3').style.display='none';
   document.getElementById('err').style.display='none';
   const b=document.getElementById('btn1');
-  if(b){b.textContent='🔥 GERAR PIX — R$ 7,90';b.disabled=false;}
+  if(b){b.textContent='🔥 GERAR PIX — R$ 14,90';b.disabled=false;}
   clearInterval(window._pt);
 }
 function copiarPix(){
@@ -854,15 +931,11 @@ function copiarPix(){
   });
 }
 
-// Upsell flow
-function irParaUpsell() {
-  document.getElementById('s1').style.display='none';
-  document.getElementById('s-upsell').style.display='block';
-}
+
 
 let _tx=null;
 async function gerarPix(valor, tipo) {
-  const amount = valor || 7.90;
+  const amount = valor || 14.90;
 
   // Show loading on clicked button
   const allBtns = document.querySelectorAll('.mbtn, .mbtn-basic');
@@ -870,7 +943,6 @@ async function gerarPix(valor, tipo) {
 
   // Hide current step, show QR step
   document.getElementById('s1').style.display='none';
-  document.getElementById('s-upsell').style.display='none';
   document.getElementById('s2').style.display='block';
 
   // Update valor display
