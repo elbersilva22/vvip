@@ -789,8 +789,8 @@ footer a:hover{ color:#fff; }
 // =============================================
 // CONFIGURAÇÃO — SUBSTITUA SUAS CHAVES AQUI
 // =============================================
-const MISTIC_CI = 'ci_3282n8k0qcuafp6';
-const MISTIC_CS = 'cs_ayuqzf43n2haxxzp0az7vzbch';
+const MISTIC_CI = 'SEU_CLIENT_ID_AQUI';
+const MISTIC_CS = 'SEU_CLIENT_SECRET_AQUI';
 const VALOR_VIP = 14.90;
 // =============================================
 
@@ -835,7 +835,7 @@ async function gerarPix() {
   transacaoId = 'vip-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
 
   try {
-    const resp = await fetch('pix.php?action=create', {
+    const resp = await fetch('/gerar-pix', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     });
@@ -873,7 +873,7 @@ function iniciarPolling() {
       return;
     }
     try {
-      const resp = await fetch('pix.php?action=check', {
+      const resp = await fetch('/verificar-pix', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ transactionId: String(transacaoId) })
