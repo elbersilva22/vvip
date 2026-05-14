@@ -835,20 +835,9 @@ async function gerarPix() {
   transacaoId = 'vip-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
 
   try {
-    const resp = await fetch('https://api.misticpay.com/api/transactions/create', {
+    const resp = await fetch('pix.php?action=create', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ci': MISTIC_CI,
-        'cs': MISTIC_CS
-      },
-      body: JSON.stringify({
-        amount: VALOR_VIP,
-        payerName: 'Cliente VIP',
-        payerDocument: gerarCPFAleatorio(),
-        transactionId: transacaoId,
-        description: 'Acesso VIP - Clube Secreto'
-      })
+      headers: { 'Content-Type': 'application/json' }
     });
 
     const data = await resp.json();
@@ -884,9 +873,9 @@ function iniciarPolling() {
       return;
     }
     try {
-      const resp = await fetch('https://api.misticpay.com/api/transactions/check', {
+      const resp = await fetch('pix.php?action=check', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ci': MISTIC_CI, 'cs': MISTIC_CS },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ transactionId: String(transacaoId) })
       });
       const data = await resp.json();
